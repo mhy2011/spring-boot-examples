@@ -9,6 +9,13 @@
         <pattern>[%5p] %d{yyyy-MM-dd HH:mm:ss.SSS} [%F:%L] %X{reqId} %m %n</pattern>
       </PatternLayout>
     </Console>
+
+    <Console name="RUNTIME-LOG" target="SYSTEM_OUT">
+      <PatternLayout>
+        <pattern>[%5p] %d{yyyy-MM-dd HH:mm:ss.SSS} [%F:%L] %X{reqId} %m %n</pattern>
+      </PatternLayout>
+    </Console>
+
     <RollingRandomAccessFile name="BUSINESS-LOG" fileName="${log-path}/business.log"
                              immediateFlush="true"
                              filePattern="${log-path}/business.log.%d{yyyyMMddHH}">
@@ -30,6 +37,9 @@
     </RollingRandomAccessFile>
   </Appenders>
   <Loggers>
+    <AsyncLogger name="RUNTIME" level="DEBUG" includeLocation="true">
+      <AppenderRef ref="RUNTIME-LOG"/>
+    </AsyncLogger>
     <AsyncLogger name="com.mhy.springboot" level="DEBUG" includeLocation="true">
       <AppenderRef ref="STDOUT-LOG"/>
     </AsyncLogger>
