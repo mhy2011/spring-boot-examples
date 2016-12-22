@@ -9,6 +9,7 @@
   <version>1.0</version>
   <modules>
     <module>spring-boot-00</module>
+    <module>spring-boot-01</module>
   </modules>
   <packaging>pom</packaging>
 
