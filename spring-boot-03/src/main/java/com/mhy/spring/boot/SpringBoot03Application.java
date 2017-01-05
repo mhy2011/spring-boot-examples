@@ -19,7 +19,7 @@ public class SpringBoot03Application {
     SpringApplication.run(SpringBoot03Application.class, args);
   }
 
-  @Bean
+  /*@Bean
   public EmbeddedServletContainerFactory servletContainerFactory(){
     TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory() {
       @Override
@@ -28,7 +28,7 @@ public class SpringBoot03Application {
         SecurityConstraint securityConstraint = new SecurityConstraint();
         securityConstraint.setUserConstraint("CONFIDENTIAL");
         SecurityCollection collection = new SecurityCollection();
-        collection.addPattern("/*");
+        collection.addPattern("*//*");
         securityConstraint.addCollection(collection);
         context.addConstraint(securityConstraint);
       }
@@ -36,7 +36,7 @@ public class SpringBoot03Application {
     };
     tomcat.addAdditionalTomcatConnectors(httpConnector());
     return tomcat;
-  }
+  }*/
 
   private Connector httpConnector() {
     Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
