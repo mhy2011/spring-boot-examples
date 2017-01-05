@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!-- 配置参考地址 http://generator.sturgeon.mopaas.com/configreference/xmlconfig.html -->
+
+    <!-- 于指定生成一组对象的环境 -->
+    <context id="my" targetRuntime="MyBatis3">
+
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+
+        <!-- 定义注释生成器的属性 http://www.mybatis.org/generator/configreference/commentGenerator.html -->
+        <commentGenerator>
+            <!-- 指定MBG生成的代码中是否包含任何注释 true为清除注释，false为不清除注释，默认为false -->
+            <property name="suppressAllComments" value="false"/>
+            <!-- 指定生成的注释中是否包含生成的日期 false:注释中带时间，true:注释中不带时间，默认为false -->
+            <property name="suppressDate" value="false"/>
+            <!-- 是否把数据库中的注释生成到代码中,默认为false,如果suppressAllComments设置为true,则该选项无效 -->
+            <property name="addRemarkComments" value="true"/>
+        </commentGenerator>
+        <!-- 数据库连接信息 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1/spring-boot-examples" userId="root" password="root">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <!-- 是否把DECIMAL和NUMERIC类型转换为java.math.BigDecimal，默认为false -->
+            <!-- 具体转换规范参见 http://generator.sturgeon.mopaas.com/configreference/javaTypeResolver.html -->
+            <property name="forceBigDecimals" value="true" />
+        </javaTypeResolver>
+
+        <!-- javaModelGenerator用于指定Java Model类的相关属性 targetPackage生成类所在包 -->
+        <javaModelGenerator targetPackage="com.mhy.spring.boot.model" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <!-- sqlMapGenerator指定映射文件的包名和位置 -->
+        <sqlMapGenerator targetPackage="com.mhy.spring.boot.mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.mhy.spring.boot.mapper" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <table tableName="person" domainObjectName="Person">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+    </context>
+</generatorConfiguration>
